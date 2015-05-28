@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title>Target Inventory Checker</title>
+    <meta charset='UTF-8'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="targetApp">
+    <div class="container">
+        <h1 class="main-title">Target Inventory Checker</h1>
+        <div ng-controller="upcController">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="zipCodeField">ZIP Code:</label>
+                    <input  type="text" id="zipCodeField" placeholder="Enter ZIP Code" ng-model="zipCode">
+                </div>
+                <div class="form-group">
+                    <label for="distanceField">Distance:</label>
+                    <select id="distanceField" convert-to-number ng-model="distance">
+                        <option value="1">1 mile</option>
+                        <option value="5">5 miles</option>
+                        <option value="10">10 miles</option>
+                        <option value="25">25 miles</option>
+                        <option value="50">50 miles</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="upcLabel" for="upcTextArea">UPCs:</label>
+                    <textarea id="upcTextArea" placeholder="Enter UPC codes here"
+                    ng-model="upcList"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-warning" ng-click="reset()" value="Reset all">
+                    <input type="submit" class="btn btn-success" ng-click="find()" value="Find deals">
+                </div>
+            </form>
+            <p>
+                {{message}}<br>
+                Current zip code is {{zipCode || 'N/A'}}<br>
+                Current distance is {{distance}} {{distance === 1 ? 'mile' : 'miles'}}<br>
+                First 5 UPCs are {{upcList.split('\n').slice(0, 5) || 'N/A'}}
+            </p>
+        </div>
+    </div>
+</body>

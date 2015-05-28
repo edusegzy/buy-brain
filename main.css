@@ -1,0 +1,17 @@
+body {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+textArea {
+    height: 300px;
+    width:200px;
+    resize: none;
+}
+
+.main-title {
+    color: #ce0e0e
+}
+.form-group label {
+    vertical-align: top;
+}
