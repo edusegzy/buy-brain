@@ -11,17 +11,18 @@ module.exports = function(grunt) {
 
     // Config tasks and options
     grunt.initConfig({
-        pkg: grunt.fle.readJSON('package.json'),
+        pkg: grunt.file.readJSON('package.json'),
         express: {
             droplet: {
                 options: {
-                    port: 80,
-                    bases: path.resolve(__dirname, 'index.html'),
+                    port: 8080,
+                    bases: path.resolve(__dirname, 'src'),
                 }
             }
         }
     });
 
     // Register tasks
-    grunt.registerTask('makeLive', ['express:droplet']);
+    grunt.registerTask('makeLive', ['express:droplet', 'express-keepalive']);
+    grunt.registerTask('default', []);
 };
